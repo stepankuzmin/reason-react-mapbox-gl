@@ -1,0 +1,32 @@
+{
+  "name": "reason-react-mapbox-gl",
+  "version": "0.1.0",
+  "description": "Reason React Mapbox GL JS Component ",
+  "author": "Stepan Kuzmin <to.stepan.kuzmin@gmail.com> (stepankuzmin.ru)",
+  "license": "MIT",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "build": "bsb -make-world && webpack",
+    "build:watch": "bsb -make-world -w",
+    "start": "bsb -make-world -w -ws _ ",
+    "clean": "bsb -clean-world",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "reason-react": "^0.5.3"
+  },
+  "peerDependencies": {
+    "react": "^16.2.0"
+  },
+  "devDependencies": {
+    "bs-platform": "^4.0.7",
+    "webpack": "^4.26.1",
+    "webpack-bundle-analyzer": "^3.0.3",
+    "webpack-cli": "^3.1.2"
+  },
+  "keywords": [
+    "BuckleScript",
+    "React",
+    "Mapbox"
+  ]
+}
