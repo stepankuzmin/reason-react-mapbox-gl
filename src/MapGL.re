@@ -1,14 +1,55 @@
-let component = ReasonReact.statelessComponent("MapGL");
+open Belt;
 
-let make = (~message, _children) => {
+type state = {
+  map: ref(option(MapboxGL.Map.t)),
+  containerRef: ref(option(Dom.element)),
+};
+
+let setContainerRef = (theRef, {ReasonReact.state}) =>
+  state.containerRef := Js.Nullable.toOption(theRef);
+
+let component = ReasonReact.reducerComponent("MapGL");
+
+let make = (~className, ~accessToken, _children) => {
   ...component,
-  render: _ => <div> {ReasonReact.string(message)} </div>,
+  initialState: () => {map: ref(None), containerRef: ref(None)},
+  didMount: self => {
+    let containerRef = self.state.containerRef^;
+    if (Option.isSome(containerRef)) {
+      MapboxGL.accessToken := accessToken;
+
+      let map_options = {
+        "container": Option.getExn(containerRef),
+        "style": "mapbox://styles/mapbox/streets-v9",
+        "center": (0, 0),
+        "zoom": 0,
+      };
+
+      let map = MapboxGL.create_map(map_options);
+      self.state.map := Some(map);
+    };
+  },
+  reducer: ((), _state) => ReasonReact.NoUpdate,
+  render: self =>
+    <div className ref={self.handle(setContainerRef)}>
+      {ReasonReact.string(className)}
+    </div>,
 };
 
 [@bs.deriving abstract]
-type props = {message: string};
+type props = {
+  className: string,
+  accessToken: string,
+  style: string,
+  center: (int, int),
+  zoom: int,
+};
 
 let default =
   ReasonReact.wrapReasonForJs(~component, props =>
-    make(~message=props->messageGet, [||])
+    make(
+      ~className=props->classNameGet,
+      ~accessToken=props->accessTokenGet,
+      [||],
+    )
   );

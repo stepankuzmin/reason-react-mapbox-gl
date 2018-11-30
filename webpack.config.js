@@ -10,7 +10,8 @@ module.exports = {
     libraryTarget: "umd"
   },
   externals: {
-    react: "react"
+    react: "react",
+    "mapbox-gl": "mapbox-gl"
   },
   plugins: [
     new BundleAnalyzerPlugin({
