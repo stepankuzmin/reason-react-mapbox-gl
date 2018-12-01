@@ -6,6 +6,7 @@
   "license": "MIT",
   "main": "dist/bundle.js",
   "scripts": {
+    "build": "bsb -make-world && webpack",
     "watch:re": "bsb -make-world -w",
     "watch:js": "webpack -w",
     "start": "concurrently --kill-others \"npm:watch:re\" \"npm:watch:js\"",

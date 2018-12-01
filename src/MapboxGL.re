@@ -1,3 +1,5 @@
+type mapboxGlModule;
+
 module Map = {
   type t;
 };
@@ -10,7 +12,10 @@ type map_options = {
   "zoom": int,
 };
 
+[@bs.module] external mapboxGl: mapboxGlModule = "mapbox-gl";
+
 [@bs.module "mapbox-gl"] [@bs.new]
 external create_map: map_options => Map.t = "Map";
 
-[@bs.module "mapbox-gl"] external accessToken: ref(string) = "accessToken";
+[@bs.set]
+external setAccessToken: (mapboxGlModule, string) => unit = "accessToken";

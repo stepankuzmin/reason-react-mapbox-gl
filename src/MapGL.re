@@ -16,7 +16,7 @@ let make = (~className, ~accessToken, _children) => {
   didMount: self => {
     let containerRef = self.state.containerRef^;
     if (Option.isSome(containerRef)) {
-      MapboxGL.accessToken := accessToken;
+      MapboxGL.setAccessToken(MapboxGL.mapboxGl, accessToken);
 
       let map_options = {
         "container": Option.getExn(containerRef),
@@ -30,10 +30,7 @@ let make = (~className, ~accessToken, _children) => {
     };
   },
   reducer: ((), _state) => ReasonReact.NoUpdate,
-  render: self =>
-    <div className ref={self.handle(setContainerRef)}>
-      {ReasonReact.string(className)}
-    </div>,
+  render: self => <div className ref={self.handle(setContainerRef)} />,
 };
 
 [@bs.deriving abstract]
