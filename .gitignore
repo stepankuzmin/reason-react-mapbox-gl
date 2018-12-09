@@ -7,3 +7,4 @@ npm-debug.log
 /lib/bs/
 /src/*.bs.js
 /node_modules/
+/storybook-static/

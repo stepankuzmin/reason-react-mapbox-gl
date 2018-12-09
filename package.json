@@ -7,16 +7,18 @@
   "main": "dist/bundle.js",
   "scripts": {
     "build": "bsb -make-world && webpack",
-    "watch:re": "bsb -make-world -w",
-    "watch:js": "webpack -w",
-    "start": "concurrently --kill-others \"npm:watch:re\" \"npm:watch:js\"",
+    "build:watch": "bsb -make-world -w",
+    "start": "concurrently --kill-others \"npm:build:watch\" \"npm:storybook\"",
     "clean": "bsb -clean-world",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "reason-react": "^0.5.3"
   },
   "peerDependencies": {
+    "mapbox-gl": "^0.51.0",
     "react": "^16.2.0"
   },
   "devDependencies": {
@@ -25,7 +27,13 @@
     "mapbox-gl": "^0.51.0",
     "webpack": "^4.26.1",
     "webpack-bundle-analyzer": "^3.0.3",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "@storybook/react": "^4.0.12",
+    "@storybook/addon-actions": "^4.0.12",
+    "@storybook/addon-links": "^4.0.12",
+    "@storybook/addons": "^4.0.12",
+    "@babel/core": "^7.2.0",
+    "babel-loader": "^8.0.4"
   },
   "keywords": [
     "BuckleScript",
