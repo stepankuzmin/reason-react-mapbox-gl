@@ -1,6 +1,7 @@
 # Reason React Mapbox GL
 
 [![Build Status](https://travis-ci.com/stepankuzmin/reason-react-mapbox-gl.svg?branch=master)](https://travis-ci.com/stepankuzmin/reason-react-mapbox-gl)
+[![Storybook](https://github.com/storybooks/press/blob/master/badges/storybook.svg)](https://stepankuzmin.ru/reason-react-mapbox-gl)
 
 ## Installation
 
