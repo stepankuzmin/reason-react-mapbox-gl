@@ -2,6 +2,9 @@ type mapboxGlModule;
 
 module Map = {
   type t;
+
+  [@bs.send] external getZoom: t => int = "";
+  [@bs.send] external setZoom: (t, int) => t = "";
 };
 
 type map_options = {

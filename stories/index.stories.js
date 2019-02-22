@@ -1,6 +1,9 @@
-import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { withKnobs } from '@storybook/addon-knobs';
 
 import SimpleMap from './simple.stories';
 
-storiesOf('MapGL', module).add('Simple map', SimpleMap);
+const stories = storiesOf('MapGL', module);
+stories.addDecorator(withKnobs);
+
+stories.add('Simple map', SimpleMap);
